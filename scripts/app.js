@@ -251,6 +251,7 @@ var food = {
 // };
 var frameCounter = 0;
 var moveOnFrameCount = 3;
+var moveOnFrameCount = 5;
 function realTime(){
     if(frameCounter >= moveOnFrameCount){
         frameCounter = 0;
