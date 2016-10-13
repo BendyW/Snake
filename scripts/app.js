@@ -1,10 +1,11 @@
 var speed;
-var foods = [];
 var score = 0;
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 var gridHeight = 16;
 var gridWidth = 24;
+//var background = new Image();
+//background.src = 'background/background.png';
 
 window.onload = function(event){
     snake.init();
@@ -33,8 +34,11 @@ window.onload = function(event){
 
  function draw() {
      ctx.clearRect(0,0, canvas.width, canvas.height);
+     //ctx.drawImage(background, 0, 0, background.width, background.height, 0, 0, canvas.width, canvas.height);
+
      snake.drawSnake();
      food.drawFoods();
+     snake.printScore();
  }
 
 
@@ -124,6 +128,10 @@ var snake = {
             //snake.body = [];
             document.location.reload();
         }
+    },
+    printScore: function(){
+        ctx.font='20px Georgia';
+        ctx.fillText(score, 450, 300);
     }
 };
 
@@ -164,6 +172,7 @@ var food = {
                 food.foods.pop();
                 food.makeFood();
                 snake.grow(3);
+                score++;
             }
         }
     }
@@ -241,7 +250,7 @@ var food = {
 //     }
 // };
 var frameCounter = 0;
-var moveOnFrameCount = 10;
+var moveOnFrameCount = 3;
 function realTime(){
     if(frameCounter >= moveOnFrameCount){
         frameCounter = 0;
