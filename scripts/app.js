@@ -118,8 +118,8 @@ var snake = {
         }
     },
     wallCollision: function(){
-        if(this.body[0].x <= 0 || this.body[0].x > 24 ||
-            this.body[0].y <= 0 || this.body[0].y > 16){
+        if(this.body[0].x <= 0 || this.body[0].x > 30 ||
+            this.body[0].y <= 0 || this.body[0].y > 24){
             //snake.body = [];
             document.location.reload();
         }
