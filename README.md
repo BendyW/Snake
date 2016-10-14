@@ -1,6 +1,6 @@
-#!Snake
+#Snake
 My First Project
-*  https://bendyw.github.io/snake
+*  https://bendyw.github.io/Snake
 
 ###Deliverables
 

@@ -1,5 +1,4 @@
 var speed;
-var foods = [];
 var score = 0;
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
@@ -169,7 +168,21 @@ var food = {
     }
 };
 
-
+var frameCounter = 0;
+var moveOnFrameCount = 6;
+function realTime() {
+    if (frameCounter >= moveOnFrameCount) {
+        frameCounter = 0;
+        snake.move();
+        snake.collideSelf();
+        food.checkCollision();
+        snake.wallCollision();
+    } else {
+        frameCounter++;
+    }
+    draw();
+    window.requestAnimationFrame(realTime);
+}
 
 
 
@@ -240,21 +253,7 @@ var food = {
 //         }
 //     }
 // };
-var frameCounter = 0;
-var moveOnFrameCount = 5;
-function realTime(){
-    if(frameCounter >= moveOnFrameCount){
-        frameCounter = 0;
-        snake.move();
-        snake.collideSelf();
-        food.checkCollision();
-        snake.wallCollision();
-    }else{
-        frameCounter++;
-    }
-    draw();
-    window.requestAnimationFrame(realTime);
-}
+
 //
 // function callFoodLocationX(){
 //     return (Math.floor(Math.random() * (canvas.width/20))) *20;
