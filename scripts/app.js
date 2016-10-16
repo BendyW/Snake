@@ -1,9 +1,9 @@
-var speed;
+var speed = 1;
 var score = 0;
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
-var gridHeight = 16;
-var gridWidth = 24;
+var gridHeight = 24;
+var gridWidth = 30;
 
 window.onload = function(event){
     snake.init();
@@ -59,19 +59,19 @@ var snake = {
         var first = this.body[0];
         switch(this.direction){
             case 'right':
-                snake.body.unshift(new this.SnakeSeg(first.x+1,first.y));
+                snake.body.unshift(new this.SnakeSeg(first.x+speed,first.y));
                 this.removeLastSeg();
                 break;
             case 'left':
-                snake.body.unshift(new this.SnakeSeg(first.x-1,first.y));
+                snake.body.unshift(new this.SnakeSeg(first.x-speed,first.y));
                 this.removeLastSeg();
                 break;
             case 'up':
-                snake.body.unshift(new this.SnakeSeg(first.x,first.y-1));
+                snake.body.unshift(new this.SnakeSeg(first.x,first.y-speed));
                 this.removeLastSeg();
                 break;
             case 'down':
-                snake.body.unshift(new this.SnakeSeg(first.x,first.y+1));
+                snake.body.unshift(new this.SnakeSeg(first.x,first.y+speed));
                 this.removeLastSeg();
                 break;
         }
@@ -129,14 +129,18 @@ var snake = {
 var food = {
     foods: [],
 
-    FoodItem: function(_x,_y){
+    FoodItem: function(_x,_y, _type){
         return{
             x: _x,
-            y: _y
+            y: _y,
+            type: _type
         }
     },
     makeFood: function(){
-        this.foods.push(new this.FoodItem(this.callFoodLocationX(),this.callFoodLocationY()));
+        this.foods.push(new this.FoodItem(this.callFoodLocationX(),this.callFoodLocationY(), this.type()));
+    },
+    type: function(){
+        return Math.ceil(Math.random()* 4);
     },
     callFoodLocationX: function(){
     return (Math.ceil(Math.random() * (canvas.width/20)));
@@ -147,10 +151,26 @@ var food = {
     drawFoods: function(){
         this.foods.forEach(this.drawSegment);
     },
+    foodRed: function(){
+
+    },
     drawSegment: function(element, index, array){
         ctx.beginPath();
         ctx.rect((element.x-1)*20, (element.y-1)*20, 19, 19);
-        ctx.fillStyle='yellow';
+        switch(element.type){
+            case 1:
+                ctx.fillStyle='yellow';
+                break;
+            case 2:
+                ctx.fillStyle='red';
+                break;
+            case 3:
+                ctx.fillStyle='green';
+                break;
+            case 4:
+                ctx.fillStyle='pink';
+
+        }
         ctx.fill();
         ctx.closePath();
     },
@@ -160,6 +180,10 @@ var food = {
     isCollided: function(element,index,array){
         if(element !== undefined) {
             if (snake.body[0].x === element.x && snake.body[0].y === element.y) {
+                switch(element.type){
+                    case 2:
+                        food.foodRed();
+                }
                 food.foods.pop();
                 food.makeFood();
                 snake.grow(3);
