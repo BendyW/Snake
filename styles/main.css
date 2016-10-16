@@ -1,9 +1,12 @@
 canvas{
     background:black;
-    margin-left: 2%;
+    margin-left: 20%;
     border: 1px solid #ffffff;
 }
 
 body{
     background-color: #bbbbbb;
+}
+button{
+    border: 1px solid black;
 }
