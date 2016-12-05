@@ -15,28 +15,34 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="styles/normalize.css">
   <link rel="stylesheet" href="styles/skeleton.css">
   <link rel="stylesheet" href="styles/main.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 
 </head>
 <body>
 
-<div class="'container">
-  <div class="six columns">
-    <h3>Snake</h3> <button>Start</button>
+<div class="container">
+  <div class="row">
+    <div class="twelve columns" id="title">
+      <h3>Snake</h3>
+      <p>pick a direction to start</p>
+      <button>Start</button>
+    </div>
   </div>
-  <div class="six columns">
-    <p>pick a direction to start</p>
-  </div>
+
+  <canvas id="myCanvas" width="800" height="600"></canvas>
+
+
 </div>
-    <canvas id="myCanvas" width="600" height="480"></canvas>
+
+
+
 
 
 <script src="scripts/app.js"></script>
