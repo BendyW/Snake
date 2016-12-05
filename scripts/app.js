@@ -34,7 +34,7 @@ window.onload = function(event){
 
      snake.drawSnake();
      food.drawFoods();
-     snake.printScore();
+     //snake.printScore();
  }
 
 
@@ -125,10 +125,10 @@ var snake = {
             document.location.reload();
         }
     },
-    printScore: function(){
-        ctx.font='20px Georgia';
-        ctx.fillText(score, 450, 300);
-    }
+    // printScore: function(){
+    //     ctx.font='20px Georgia';
+    //     ctx.fillText(,450, 300);
+    // }
 };
 
 var food = {
@@ -191,8 +191,8 @@ var food = {
                 }
                 food.foods.pop();
                 food.makeFood();
-                snake.grow(3);
-                score++;
+                snake.grow(100);
+                //score++;
             }
         }
     }
