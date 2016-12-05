@@ -191,7 +191,7 @@ var food = {
                 }
                 food.foods.pop();
                 food.makeFood();
-                snake.grow(100);
+                snake.grow(3);
                 //score++;
             }
         }
