@@ -1,5 +1,5 @@
 var speed = 1;
-var score = 0;
+//var score = 0;
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 
